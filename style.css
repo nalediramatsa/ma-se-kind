@@ -41,6 +41,9 @@ header {
   cursor: pointer;
   font-size: 24px;
   position: relative;
+  z-index: 2000;
+  width: 40px;
+  height: 40px;
 }
 
 .logo-menu-icon {
@@ -94,6 +97,22 @@ color: white;
 font-weight: bold;
 }
 
+/* Hamburger  / logo transitions */
+.menu-button span,
+.logo-menuicon {
+  transition: all 0.3s ease;
+}
+
+/* When menu is open*/
+.menu-open .menu-button span {
+  opacity:0; /*fade out the hamburger lines*/
+}
+
+.menu-open .logo-menu-icon {
+  display: block;     /*Make logo visible*?
+  opacity: 1;         /*Fade in Logo*/
+}
+
 .projects {
   padding: 60px 40px;
 }
@@ -111,5 +130,18 @@ border: 1px solid #ddd;
 border-radius: 8px;
 }
 
+@media (max-width: 900px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
+@media (max-width: 600px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+  .menu-links a {
+    font-size: 26px;
+  }
+}
 
