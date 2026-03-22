@@ -1,6 +1,12 @@
 body {
   background-color: #f0e6c4;
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
+  color: #222;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.5px;
 }
 
 html {
@@ -12,8 +18,19 @@ h1 {
   font-size: 48px;
 }
 
+h2 {
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+
+h3 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
 p {
-  font-size: 20px;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 #home {
@@ -121,13 +138,49 @@ font-weight: bold;
   display:grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  margin-top: 40px
+  margin-top: 40px;
 }
 
 .project-card {
-padding: 25px;
-border: 1px solid #ddd;
-border-radius: 8px;
+  display: block;
+  padding: 25px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card img {
+  width:100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 15px;
+
+  transition: transform 0.3s ease;
+}
+
+.project-card h3 {
+  margin-bottom: 8px;
+}
+
+.project-card p {
+  font-size: 16px;
+}
+
+.project-card:hover {
+  transform: translate(-5px);
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+}
+
+.project-card:hover img {
+  transform:scale(1.05);
+}
+
+.project-card {
+  overflow: hidden; 
 }
 
 @media (max-width: 900px) {
@@ -145,3 +198,34 @@ border-radius: 8px;
   }
 }
 
+.archive-page {
+  max-width: 800px;
+  margin: 100px auto;
+  padding: 0 20px;
+}
+
+.archive-page img {
+  width: 100%;
+  margin: 30px 0;
+  border-radius: 8px;
+}
+
+.archive-page a {
+  display: inline-block;
+  margin-top: 40px;
+  text-decoration: none;
+  color: #555;
+  font-size: 14px;
+}
+
+.archive-page h1 {
+  margin-bottom: 10px;
+}
+
+.archive-page p {
+  margin-top: 20px;
+}
+
+#who-we-are {
+  background-color: white;
+}
