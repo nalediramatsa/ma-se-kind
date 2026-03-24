@@ -2,6 +2,8 @@ body {
   background-color: #f0e6c4;
   font-family: 'Inter', sans-serif;
   color: #222;
+  letter-spacing: 0.2px;
+  margin:0; /*removes unwanted page gaps*/
 }
 
 h1, h2, h3 {
@@ -13,39 +15,58 @@ html {
   scroll-behavior: smooth;
 }
 
+/* TYPOGRAPHY STYLING */
+
 h1 {
   color: #222222;
-  font-size: 48px;
+  font-size: 52px;
+  line-height: 1.1;
 }
 
 h2 {
   font-size: 36px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 h3 {
-  font-size: 22px;
+  font-size: 20px;
   margin-bottom: 8px;
+  letter-spacing: 0.3px;
 }
 
 p {
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.7;
+  max-width: 65ch;
 }
+
+/* GLOBAL SECTION STRUCTURE */
+
+section {
+  min-height: 100vh;
+  padding: 80px 40px;
+}
+
+/* HOME */
 
 #home {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   background-color: #f0e6c4;
+
+  flex-direction: column;
+  text-align: center;
 }
 
 .home-logo img {
   width: 40vw;
   max-width: 400px;
   height: auto;
+  margin-bottom: 20px;
 }
+
+/* HEADER */
 
 header {
   position: fixed;
@@ -61,78 +82,108 @@ header {
   z-index: 2000;
   width: 40px;
   height: 40px;
-}
-
-.logo-menu-icon {
-  display:none;
-  width: 40px;
-  height: auto;
-  cursor: pointer;
-}
-
-.menu-open .logo-menu-icon {
-  display: block;
-  position: absolute;
-  top:0;
-  left:0;
-}
-
-.menu-button span {
-  display: inline-block;
-}
-
-.menu-open .menu-links {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.menu-open .menu-button span {
-  display: none;
-}
-
-.menu-links {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color:rgba(240,230,196,0.85);
   display:flex;
-  flex-direction: column;
+  align-items:center;
   justify-content: center;
-  align-items: center;
-  gap: 40px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
 }
 
-.menu-links a {
-font-size: 32px;
-text-decoration: none;
-color: white;
-font-weight: bold;
-}
+/* .menu-button span {
+  display: inline-block;
+} was removed because .menu-button{} already controls layout with flexbox */
 
 /* Hamburger  / logo transitions */
 .menu-button span,
-.logo-menuicon {
+.logo-menu-icon {
   transition: all 0.3s ease;
+}
+
+/* LOGO / BURGER SWITCH */
+
+.logo-menu-icon {
+  display:none;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  /* cursor:pointer; was removed */
 }
 
 /* When menu is open*/
 .menu-open .menu-button span {
-  opacity:0; /*fade out the hamburger lines*/
+  opacity:0; /*fade out the hamburger lines*/ /*Changed to this from, display: none;*/
 }
 
 .menu-open .logo-menu-icon {
-  display: block;     /*Make logo visible*?
+  display: block;     /*Make logo visible*/
   opacity: 1;         /*Fade in Logo*/
 }
 
-.projects {
-  padding: 60px 40px;
+/* MENU OPEN STATE */
+
+.menu-open .menu-links {
+  transform: translateX(0); /*telling content to slide into view */
+  opacity: 1;
+  pointer-events: auto;
 }
+
+/* SLIDE-IN MENU */
+
+.menu-links {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color:rgba(240,230,196,0.85);
+
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  gap: 40px;
+
+  transform: translateX(100%); /*hidden off screen*/
+  pointer-events: none;
+
+  transition: transform 0.4s cubic-bezier(0.77,0,0.175,1), opacity 0.3s ease; /* that vs. transition:transform 0.4s ease, opacity 0.3s ease; (still to see which i prefer better)*/
+
+  z-index: 1500;
+}
+
+/* MENU LINKS ANIMATION */
+
+.menu-links a {
+font-size: 32px;
+text-decoration: none;
+color: #222;
+font-weight: bold;
+
+transform: translateX(50px);
+opacity: 0;
+transition:all 0.3s ease;
+}
+
+.menu-open .menu-links a {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* STAGGER MENU LINKS EFFECT */
+
+.menu-links a:nth-child(1) {transition-delay:0.2s;}
+.menu-links a:nth-child(2) {transition-delay:0.4s;}
+.menu-links a:nth-child(3) {transition-delay:0.6s;}
+.menu-links a:nth-child(4) {transition-delay:0.8s;}
+
+
+
+/* .projects {
+  padding: 60px 40px;
+} was removed because i now have section {} styling */
+
+
+
+/* GRID + CARDS */
 
 .project-grid {
   display:grid;
@@ -148,8 +199,13 @@ font-weight: bold;
   border-radius: 8px;
   text-decoration: none;
   color: inherit;
+  background: white;
+  
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-transition: transform 0.2s ease, box-shadow 0.2s ease;
+.project-card {
+  overflow: hidden; 
 }
 
 .project-card img {
@@ -158,8 +214,18 @@ transition: transform 0.2s ease, box-shadow 0.2s ease;
   object-fit: cover;
   border-radius: 6px;
   margin-bottom: 15px;
+  aspect-ratio: 3 / 2;
 
   transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0px 10px 25px rgba(0,0,0,0.12);
+}
+
+.project-card:hover img {
+  transform:scale(1.05);
 }
 
 .project-card h3 {
@@ -170,18 +236,7 @@ transition: transform 0.2s ease, box-shadow 0.2s ease;
   font-size: 16px;
 }
 
-.project-card:hover {
-  transform: translate(-5px);
-  box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
-}
-
-.project-card:hover img {
-  transform:scale(1.05);
-}
-
-.project-card {
-  overflow: hidden; 
-}
+/* RESPONSIVE (JAVASCRIPT?) */
 
 @media (max-width: 900px) {
   .project-grid {
@@ -198,19 +253,31 @@ transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 }
 
-.archive-page {
-  max-width: 800px;
-  margin: 100px auto;
-  padding: 0 20px;
+/* COLLECTION SECTION */
+
+.our-collection {
+  /* padding:80px 40px; was removed because we added it to the GLOBAL SECTIONS STYLING, i think */
+  text-align:center;
+  background-color:black;
 }
 
-.archive-page img {
+.our-collection .project-grid {
+  margin-top: 50px;
+}
+
+/* COLLECTION PAGES */
+
+.our-collection-page {
+  margin: 0 auto;
+}
+
+.our-collection-page img {
   width: 100%;
   margin: 30px 0;
   border-radius: 8px;
 }
 
-.archive-page a {
+.our-collection-page a {
   display: inline-block;
   margin-top: 40px;
   text-decoration: none;
@@ -218,14 +285,22 @@ transition: transform 0.2s ease, box-shadow 0.2s ease;
   font-size: 14px;
 }
 
-.archive-page h1 {
+.our-collection-page h1 {
   margin-bottom: 10px;
 }
 
-.archive-page p {
+.our-collection-page p {
   margin-top: 20px;
 }
 
+/* WHO WE ARE SECTION */
+
 #who-we-are {
   background-color: white;
+  text-align: center;
+}
+
+#contact {
+  background-color:#f0e6c4;
+  text-align: center;
 }
