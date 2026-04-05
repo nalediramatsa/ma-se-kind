@@ -16,3 +16,27 @@ navLinks.forEach(link => { //this loops over each link
 //When a link is clicked, hide the menu overlay and return the hamburger icon to its original state
     });
 });
+
+//==========================
+// SCROLL-BASED COLOR CHANGE
+//==========================
+
+const darkSections = document.querySelectorAll('.dark-section');
+
+window.addEventListener('scroll', () => {
+    let isInDarkSection = false;
+
+    darkSections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+
+        if (rect.top <= 100 && rect.bottom >= 100) {
+            isInDarkSection = true;
+        }
+    });
+
+        if (isInDarkSection) {
+            menuButton.classList.add('light');
+        } else {
+            menuButton.classList.remove('light');
+        }
+    });

@@ -38,6 +38,7 @@ p {
   font-size: 16px;
   line-height: 1.7;
   max-width: 65ch;
+  margin: 0 auto;
 }
 
 /* GLOBAL SECTION STRUCTURE */
@@ -63,7 +64,7 @@ section {
   width: 40vw;
   max-width: 400px;
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 100px;
 }
 
 /* HEADER */
@@ -82,19 +83,32 @@ header {
   z-index: 2000;
   width: 40px;
   height: 40px;
-  display:flex;
+  /* display:flex;
   align-items:center;
-  justify-content: center;
+  justify-content: center; were all removed because the were causing the two menu icons not to sit exactly on the same spot on the screen */
 }
 
-/* .menu-button span {
-  display: inline-block;
-} was removed because .menu-button{} already controls layout with flexbox */
+/* COLOR SWITCHING */
+
+.menu-button span {
+  color: black;
+  transition: color 0.08s cubic-bezier(0.4, 0, 0.2, 1);
+} 
+
+.menu-button.light span {
+  color: white ;
+}
+
+/* ICON POSITIONING */
 
 /* Hamburger  / logo transitions */
 .menu-button span,
 .logo-menu-icon {
   transition: all 0.3s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* LOGO / BURGER SWITCH */
@@ -187,9 +201,12 @@ transition:all 0.3s ease;
 
 .project-grid {
   display:grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
   margin-top: 40px;
+
+  max-width: 1100px;
+  margin: 40px auto 0;
 }
 
 .project-card {
@@ -259,6 +276,11 @@ transition:all 0.3s ease;
   /* padding:80px 40px; was removed because we added it to the GLOBAL SECTIONS STYLING, i think */
   text-align:center;
   background-color:black;
+  justify-content: center;
+}
+
+.our-collection h2 {
+  color: white;
 }
 
 .our-collection .project-grid {
@@ -269,6 +291,7 @@ transition:all 0.3s ease;
 
 .our-collection-page {
   margin: 0 auto;
+  justify-content: center;
 }
 
 .our-collection-page img {
@@ -291,6 +314,7 @@ transition:all 0.3s ease;
 
 .our-collection-page p {
   margin-top: 20px;
+  text-align: center;
 }
 
 /* WHO WE ARE SECTION */
@@ -298,9 +322,69 @@ transition:all 0.3s ease;
 #who-we-are {
   background-color: white;
   text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
+
+/* CONTACT SECTION */
 
 #contact {
   background-color:#f0e6c4;
   text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
+
+/* FORM CONTAINER */
+
+.contact-form {
+  max-width: 500px;
+  margin-top: clamp(100px, 5vh, 100px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* INPUT FIELDS */
+
+.contact-form input,
+.contact-form textarea {
+  padding:12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #222;
+}
+
+/* BUTTON */
+
+.contact-form button {
+  padding: 12px;
+  border:none;
+  background-color: #222;
+  color: white;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #444;
+}
+
+/* .social-links a {
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+} */
