@@ -40,3 +40,13 @@ window.addEventListener('scroll', () => {
             menuButton.classList.remove('light');
         }
     });
+
+//==========================
+// LOOKBOOK VIDEO BEHAVIOR
+//==========================
+  /*  const section = document.querySelector("#lookbook");
+    const video = document.querySelector(".lookbook-video");
+
+    video.addEventListener("canplaythrough", () =>{
+        section.style.opacity = "1";
+    }); */
