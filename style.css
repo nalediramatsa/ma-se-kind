@@ -25,7 +25,8 @@ h1 {
 
 h2 {
   font-size: 36px;
-  margin-bottom: 12px;
+  margin-bottom: 48px;
+  margin-top: 12px ;
 }
 
 h3 {
@@ -38,7 +39,7 @@ p {
   font-size: 16px;
   line-height: 1.7;
   max-width: 65ch;
-  margin: 0 auto;
+  margin: 0 auto 24px;
 }
 
 /* GLOBAL SECTION STRUCTURE */
@@ -50,7 +51,7 @@ section {
 
 /* HOME */
 
-#home {
+#our-neighbourhood {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,7 +61,7 @@ section {
   text-align: center;
 }
 
-.home-logo img {
+.our-neighbourhood-logo img {
   width: 40vw;
   max-width: 400px;
   height: auto;
@@ -319,7 +320,7 @@ transition:all 0.3s ease;
 
 /* WHO WE ARE SECTION */
 
-#who-we-are {
+#our-story {
   background-color: white;
   text-align: center;
   align-items: center;
@@ -369,7 +370,7 @@ transition:all 0.3s ease;
 
 /* CONTACT SECTION */
 
-#contact {
+#say-aweh {
   background-color:#f0e6c4;
   text-align: center;
   align-items: center;
@@ -377,9 +378,17 @@ transition:all 0.3s ease;
   flex-direction: column;
 }
 
+.italic-heading {
+  font-style: italic;
+}
+
+.contact-description {
+  max-width: 50ch;
+}
+
 /* FORM CONTAINER */
 
-.contact-form {
+.say-aweh-form {
   max-width: 500px;
   margin-top: clamp(100px, 5vh, 100px);
   width: 100%;
@@ -390,8 +399,8 @@ transition:all 0.3s ease;
 
 /* INPUT FIELDS */
 
-.contact-form input,
-.contact-form textarea {
+.say-aweh-form input,
+.say-aweh-form textarea {
   padding:12px;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -399,15 +408,15 @@ transition:all 0.3s ease;
   font-size: 16px;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
+.say-aweh-form input:focus,
+.say-aweh-form textarea:focus {
   outline: none;
   border-color: #222;
 }
 
 /* BUTTON */
 
-.contact-form button {
+.say-aweh-form button {
   padding: 12px;
   border:none;
   background-color: #222;
@@ -418,7 +427,7 @@ transition:all 0.3s ease;
   transition: 0.3s ease;
 }
 
-.contact-form button:hover {
+.say-aweh-form button:hover {
   background-color: #444;
 }
 
